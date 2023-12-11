@@ -1,0 +1,51 @@
+﻿@model List<Company>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Company List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Company" asp-action="Create" class="btn btn-primary">Create new company <i class="bi bi-plus-square"></i></a>
+
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>Street address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postal code</th>
+                <th>Phone number</th>
+              
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Name</td>
+                    <td>@obj.StreetAddress</td>
+                    <td>@obj.City</td>
+                    <td>@obj.State</td>
+                    <td>@obj.PostalCode</td>
+                    <td>@obj.PhoneNumber</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Company" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i>edit
+                            </a>
+                            <a asp-controller="Company" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3-fill"></i>Delete
+                            </a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
